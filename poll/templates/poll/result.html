@@ -1,0 +1,14 @@
+{% load i18n %}
+{% load polls_tags %}
+
+<div class="poll_style">
+	<p class="title">{{ poll.title }}</p>
+	<ul>
+		{% for i in items %}
+		<li>{{ i.value }}: <b>{% filter floatformat %}{% percentage poll i %}{% endfilter %}%</b><br>
+			<div style="background: #D1B692; border: 1px solid #AD8346; height: 8px; width: {% percentage poll i %}%;"></div>
+		</li> 
+		{% endfor %}
+	</ul>
+	<p>{% trans "Total votes" %}: <b>{{ poll.get_vote_count }}</b></p><br>
+</div>
