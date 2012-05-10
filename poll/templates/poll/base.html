@@ -1,9 +1,11 @@
+{% load i18n %}
+
 {% block poll_script %}
 	
 {% endblock %}
 
 <div id="poll_container">
-	<h1>Опрос</h1>
+	<h1>{% trans 'poll' %}</h1>
 	{% block poll_content %}
 		
 	{% endblock %}
