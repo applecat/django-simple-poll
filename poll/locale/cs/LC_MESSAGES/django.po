@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <vencax77@gmail.com>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-10 13:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+
+#: models.py:16
+msgid "question"
+msgstr "otázka"
+
+#: models.py:17
+msgid "date"
+msgstr "datum"
+
+#: models.py:18
+msgid "is published"
+msgstr "je publikována"
+
+#: models.py:25 models.py:58
+msgid "poll"
+msgstr "hlasování"
+
+#: models.py:26
+msgid "polls"
+msgstr "hlasování"
+
+#: models.py:41
+msgid "value"
+msgstr "hodnota"
+
+#: models.py:42
+msgid "position"
+msgstr "pozice"
+
+#: models.py:45
+msgid "answer"
+msgstr "odpověď"
+
+#: models.py:46
+msgid "answers"
+msgstr "odpověďi"
+
+#: models.py:59
+msgid "voted item"
+msgstr "zvolena odpověď"
+
+#: models.py:60
+msgid "user's IP"
+msgstr "IP uživatele"
+
+#: models.py:61
+msgid "user"
+msgstr "uživatel"
+
+#: models.py:65
+msgid "vote"
+msgstr "hlas"
+
+#: models.py:66
+msgid "votes"
+msgstr "hlasy"
+
+#: templates/poll/poll.html:18
+msgid "Please, select an answer"
+msgstr "prosím, vyber odpověď"
+
+#: templates/poll/poll.html:40
+msgid "Vote"
+msgstr "Hlasuj"
+
+#: templates/poll/result.html:16
+msgid "Total votes"
+msgstr "Počet hlasů"
