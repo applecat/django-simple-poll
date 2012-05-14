@@ -1,0 +1,3 @@
+include README
+recursive-include poll/templates *
+recursive-include poll/locale *
