@@ -12,8 +12,7 @@ setup(
     author='Dmitry Akinin',
     author_email='d.akinin@gmail.com',
     url='https://github.com/applecat/django-simple-poll',
-    packages=['poll', 'poll.templatetags', 'poll.migrations'],
-    package_data={'poll': ['locale/ru/LC_MESSAGES/*', 'templates/poll/*']},
+    packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
