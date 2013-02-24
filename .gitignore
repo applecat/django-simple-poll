@@ -1,4 +1,5 @@
-.DS_Store
+/.project
+/.pydevproject
+/.settings
+*.gitignore
 *.pyc
-*.tmproj
-*.egg-info*
