@@ -4,8 +4,8 @@
 
 {% block poll_script %}
 <script type="text/javascript">
-	var vote_url = '{% url poll_ajax_vote poll.pk %}';
-	var result_url = '{% url poll_result poll.pk %}';
+	var vote_url = '{% url "poll_ajax_vote" poll.pk %}';
+	var result_url = '{% url "poll_result" poll.pk %}';
 	$(document).ready(function() {
 		function showResults() {
 			$.get(result_url, function(data) {
