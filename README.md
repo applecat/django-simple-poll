@@ -1,7 +1,7 @@
 Simple Django poll application
 
 Usage
------
+=====
 
 1. Add 'poll' application in the ``INSTALLED_APPS`` settings:
    
