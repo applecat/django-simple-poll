@@ -3,9 +3,15 @@
 import datetime
 from django.db import models
 from django.utils.translation import gettext as _
-from django.contrib.auth import get_user_model
 from django.db.models.manager import Manager
 from django.core.exceptions import ValidationError
+
+try:
+    from django.contrib.auth import get_user_model
+except ImportError:
+    from django.contrib.auth.models import User
+else:
+    User = get_user_model()
 
 
 class PublishedManager(Manager):
@@ -58,7 +64,7 @@ class Vote(models.Model):
     poll = models.ForeignKey(Poll, verbose_name=_('poll'))
     item = models.ForeignKey(Item, verbose_name=_('voted item'))
     ip = models.IPAddressField(verbose_name=_('user\'s IP'))
-    user = models.ForeignKey(get_user_model(), blank=True, null=True,
+    user = models.ForeignKey(User, blank=True, null=True,
                              verbose_name=_('user'))
     datetime = models.DateTimeField(auto_now_add=True)
 
@@ -67,7 +73,7 @@ class Vote(models.Model):
         verbose_name_plural = _('votes')
 
     def __unicode__(self):
-        user = get_user_model()
-        if isinstance(self.user, user):
-            return getattr(user, user.USERNAME_FIELD)
+        if isinstance(self.user, User):
+            username_field = getattr(User, 'USERNAME_FIELD', 'username')
+            return getattr(User, username_field, '')
         return self.ip
