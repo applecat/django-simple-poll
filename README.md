@@ -4,6 +4,11 @@ Installation
 ------------
 
 ```
+pip install django-simple-poll
+```
+
+Install latest from github:
+```
 pip install -e git+https://github.com/applecat/django-simple-poll.git#egg=django-simple-poll
 ```
 
