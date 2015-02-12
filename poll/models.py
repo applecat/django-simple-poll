@@ -4,7 +4,6 @@ import datetime
 from django.db import models
 from django.utils.translation import gettext as _
 from django.db.models.manager import Manager
-from django.core.exceptions import ValidationError
 
 try:
     from django.contrib.auth import get_user_model
@@ -17,6 +16,7 @@ else:
 class PublishedManager(Manager):
     def get_query_set(self):
         return super(PublishedManager, self).get_query_set().filter(is_published=True)
+
 
 class Poll(models.Model):
     title = models.CharField(max_length=250, verbose_name=_('question'))
