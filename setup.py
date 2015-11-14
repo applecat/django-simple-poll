@@ -12,7 +12,7 @@ setup(
     author='Dmitry Akinin',
     author_email='d.akinin@gmail.com',
     url='https://github.com/applecat/django-simple-poll',
-    download_url='https://github.com/applecat/django-simple-poll/tarball/0.1.1',
+    download_url='https://github.com/applecat/django-simple-poll/tarball/0.1.3',
     packages=find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
