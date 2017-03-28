@@ -57,8 +57,8 @@ Usage
 
 7. Make vote, see the results:
 
-![8973a134-13db-11e7-9788-94fe3462d1ce](https://cloud.githubusercontent.com/assets/390483/24417740/396b4e5a-13f2-11e7-8978-47803c0528d3.png)
-![870887e8-13db-11e7-81b6-b5a721696e32](https://cloud.githubusercontent.com/assets/390483/24417741/396c019c-13f2-11e7-8238-ebcbf2be01a8.png)
+![2017-03-28 17 17 10](https://cloud.githubusercontent.com/assets/390483/24410357/8973a134-13db-11e7-9788-94fe3462d1ce.png)
+![2017-03-28 17 17 05](https://cloud.githubusercontent.com/assets/390483/24410353/870887e8-13db-11e7-81b6-b5a721696e32.png)
 
 
 Customization
