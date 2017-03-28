@@ -7,11 +7,11 @@
 var vote_url = '{% url "poll_ajax_vote" poll.pk %}';
 var result_url = '{% url "poll_result" poll.pk %}';
 document.addEventListener('DOMContentLoaded', function(){
-		function showResults() {
-				$.get(result_url, function(data) {
-						$("#poll_container").html(data);
-				});
-		}
+    function showResults() {
+        $.get(result_url, function(data) {
+            $("#poll_container").html(data);
+        });
+    }
     $("#poll_send").click(function() {
         var item = $('#poll_form input[name=item]:checked').val();
         if (typeof item === "undefined") {
@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
 {% block poll_content %}
 <div class="poll_style">
-	<form method="GET" action="." id="poll_form">
-		<p class="title">{{ poll.title }}</p>
-		<ul>
-			{% for i in items %}
-			<li><input type="radio" name="item" id="item_{{ i.id }}" value="{{ i.id }}" />
-				<label for="item_{{ i.id }}">{{ i.value }}</label></li>
-			{% endfor %}
-		</ul>
-		<p class="poll_send"><input type="button" id="poll_send" value="{% trans 'Vote' %}" /></p>
-	</form>
+    <form method="GET" action="." id="poll_form">
+        <p class="title">{{ poll.title }}</p>
+        <ul>
+            {% for i in items %}
+            <li><input type="radio" name="item" id="item_{{ i.id }}" value="{{ i.id }}" />
+                <label for="item_{{ i.id }}">{{ i.value }}</label></li>
+            {% endfor %}
+        </ul>
+        <p class="poll_send"><input type="button" id="poll_send" value="{% trans 'Vote' %}" /></p>
+    </form>
 </div>
 {% endblock %}
