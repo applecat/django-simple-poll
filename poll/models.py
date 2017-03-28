@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+from django.utils.encoding import python_2_unicode_compatible
+
 import datetime
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext as _
 from django.db.models.manager import Manager
+
 
 try:
     from django.contrib.auth import get_user_model
@@ -19,6 +23,7 @@ class PublishedManager(Manager):
         return super(PublishedManager, self).get_query_set().filter(is_published=True)
 
 
+@python_2_unicode_compatible
 class Poll(models.Model):
     title = models.CharField(max_length=250, verbose_name=_('question'))
     date = models.DateField(verbose_name=_('date'), default=datetime.date.today)
@@ -32,7 +37,7 @@ class Poll(models.Model):
         verbose_name = _('poll')
         verbose_name_plural = _('polls')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_vote_count(self):
@@ -40,9 +45,10 @@ class Poll(models.Model):
     vote_count = property(fget=get_vote_count)
 
     def get_cookie_name(self):
-        return str('poll_%s' % (self.pk))
+        return 'poll_%s' % self.pk
 
 
+@python_2_unicode_compatible
 class Item(models.Model):
     poll = models.ForeignKey(Poll)
     value = models.CharField(max_length=250, verbose_name=_('value'))
@@ -53,7 +59,7 @@ class Item(models.Model):
         verbose_name_plural = _('answers')
         ordering = ['pos']
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s' % (self.value,)
 
     def get_vote_count(self):
@@ -61,10 +67,11 @@ class Item(models.Model):
     vote_count = property(fget=get_vote_count)
 
 
+@python_2_unicode_compatible
 class Vote(models.Model):
     poll = models.ForeignKey(Poll, verbose_name=_('poll'))
     item = models.ForeignKey(Item, verbose_name=_('voted item'))
-    ip = models.IPAddressField(verbose_name=_('user\'s IP'))
+    ip = models.GenericIPAddressField(verbose_name=_('user\'s IP'))
     user = models.ForeignKey(User, blank=True, null=True,
                              verbose_name=_('user'))
     datetime = models.DateTimeField(auto_now_add=True)
@@ -73,8 +80,8 @@ class Vote(models.Model):
         verbose_name = _('vote')
         verbose_name_plural = _('votes')
 
-    def __unicode__(self):
-        if isinstance(User, basestring):
+    def __str__(self):
+        if isinstance(User, str):
             UserModel = get_user_model()
         else:
             UserModel = User

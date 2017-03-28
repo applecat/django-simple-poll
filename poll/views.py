@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 
 from .utils import set_cookie
@@ -46,26 +46,26 @@ def vote(request, poll_pk):
 def poll(request, poll_pk):
     try:
         poll = Poll.objects.get(pk=poll_pk)
-    except:
+    except Poll.DoesNotExists:
         return HttpResponse('Wrong parameters', status=400)
 
     items = Item.objects.filter(poll=poll)
 
-    return render_to_response("poll/poll.html", {
+    return render(request, "poll/poll.html", {
         'poll': poll,
         'items': items,
-    }, context_instance=RequestContext(request))
+    })
 
 
 def result(request, poll_pk):
     try:
         poll = Poll.objects.get(pk=poll_pk)
-    except:
+    except Poll.DoesNotExists:
         return HttpResponse('Wrong parameters', status=400)
 
     items = Item.objects.filter(poll=poll)
 
-    return render_to_response("poll/result.html", {
+    return render(request, "poll/result.html", {
         'poll': poll,
         'items': items,
     })

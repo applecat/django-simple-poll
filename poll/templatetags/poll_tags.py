@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from django import template
-from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils.html import format_html
 from poll.models import *
 from poll import views
 register = template.Library()
+
 
 @register.simple_tag(takes_context=True)
 def poll(context):
@@ -12,14 +14,24 @@ def poll(context):
 
     try:
         poll = Poll.published.latest("date")
-    except:
+    except Poll.DoesNotExists:
         return ''
-    
-    if poll.get_cookie_name() not in request.COOKIES:
-        return views.poll(context['request'], poll.id).content
+
+    items = Item.objects.filter(poll=poll)
+
+    if poll.get_cookie_name() in request.COOKIES:
+        template = "poll/result.html"
     else:
-        return views.result(context['request'], poll.id).content
-    
+        template = "poll/poll.html"
+
+    content = render_to_string(template, {
+        'poll': poll,
+        'items': items,
+    })
+
+    return content
+
+
 @register.simple_tag                                                                                                                         
 def percentage(poll, item):
     poll_vote_count = poll.get_vote_count()

@@ -1,6 +1,7 @@
 import datetime
 
-def set_cookie(response, key, value, days_expire = 90):
+
+def set_cookie(response, key, value, days_expire=90):
     if days_expire is None:
         max_age = 365 * 24 * 60 * 60    #one year
     else:
