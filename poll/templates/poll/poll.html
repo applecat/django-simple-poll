@@ -4,41 +4,40 @@
 
 {% block poll_script %}
 <script type="text/javascript">
-	var vote_url = '{% url "poll_ajax_vote" poll.pk %}';
-	var result_url = '{% url "poll_result" poll.pk %}';
-//	$(document).ready(function() {
-	document.addEventListener('DOMContentLoaded', function(){
+var vote_url = '{% url "poll_ajax_vote" poll.pk %}';
+var result_url = '{% url "poll_result" poll.pk %}';
+document.addEventListener('DOMContentLoaded', function(){
 		function showResults() {
-			$.get(result_url, function(data) {
-				$("#poll_container").html(data);
-			});			
+				$.get(result_url, function(data) {
+						$("#poll_container").html(data);
+				});
 		}
-		$("#poll_send").click(function() {
-			item = $('#poll_form input[name=item]:checked').val();
-			if (typeof item === "undefined") {
-				alert("{% trans "Please, select an answer" %}");
-				return false;
-			}
-			$.get(vote_url, {item: item}, function() {
-				showResults();
-			});
-			return false;
-		});
-	});
+    $("#poll_send").click(function() {
+        var item = $('#poll_form input[name=item]:checked').val();
+        if (typeof item === "undefined") {
+            alert("{% trans 'Please, select an answer' %}");
+            return false;
+        }
+        $.get(vote_url, {item: item}, function() {
+            showResults();
+        });
+        return false;
+    });
+});
 </script>
 {% endblock %}
 
 {% block poll_content %}
 <div class="poll_style">
-	<form method="get" action="." id="poll_form">
+	<form method="GET" action="." id="poll_form">
 		<p class="title">{{ poll.title }}</p>
 		<ul>
 			{% for i in items %}
-			<li><input type="radio" name="item" id="item_{{ i.id }}" value="{{ i.id }}" /> 
-				<label for="item_{{ i.id }}">{{ i.value }}</label></li> 
+			<li><input type="radio" name="item" id="item_{{ i.id }}" value="{{ i.id }}" />
+				<label for="item_{{ i.id }}">{{ i.value }}</label></li>
 			{% endfor %}
-		</ul>                        
-		<p class="poll_send"><input type="button" id="poll_send" value="{% trans "Vote" %}" /></p>
+		</ul>
+		<p class="poll_send"><input type="button" id="poll_send" value="{% trans 'Vote' %}" /></p>
 	</form>
-</div>	
+</div>
 {% endblock %}
