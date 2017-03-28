@@ -3,8 +3,6 @@ from setuptools import setup, find_packages
 # Dynamically calculate the version based on django.VERSION.
 version = __import__('poll').get_version()
 
-print find_packages()
-
 setup(
     name='django-simple-poll',
     version=version,
