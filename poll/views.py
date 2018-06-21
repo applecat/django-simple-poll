@@ -24,7 +24,7 @@ def vote(request, poll_pk):
         except:
             return HttpResponse('Wrong parameters', status=400)
 
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             user = request.user
         else:
             user = None
