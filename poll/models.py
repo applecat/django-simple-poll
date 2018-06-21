@@ -50,7 +50,7 @@ class Poll(models.Model):
 
 @python_2_unicode_compatible
 class Item(models.Model):
-    poll = models.ForeignKey(Poll)
+    poll = models.ForeignKey(Poll, on_delete=models.PROTECT)
     value = models.CharField(max_length=250, verbose_name=_('value'))
     pos = models.SmallIntegerField(default='0', verbose_name=_('position'))
 
@@ -69,11 +69,11 @@ class Item(models.Model):
 
 @python_2_unicode_compatible
 class Vote(models.Model):
-    poll = models.ForeignKey(Poll, verbose_name=_('poll'))
-    item = models.ForeignKey(Item, verbose_name=_('voted item'))
+    poll = models.ForeignKey(Poll, verbose_name=_('poll'), on_delete=models.PROTECT)
+    item = models.ForeignKey(Item, verbose_name=_('voted item'), on_delete=models.PROTECT)
     ip = models.GenericIPAddressField(verbose_name=_('user\'s IP'))
     user = models.ForeignKey(User, blank=True, null=True,
-                             verbose_name=_('user'))
+                             verbose_name=_('user'), on_delete=models.PROTECT)
     datetime = models.DateTimeField(auto_now_add=True)
 
     class Meta:
