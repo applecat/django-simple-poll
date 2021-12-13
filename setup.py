@@ -11,8 +11,6 @@ with open("README.md", "r") as fh:
 setup(
     name='django-simple-poll',
     version=version,
-    author='Dmitry Akinin',
-    author_email='d.akinin@gmail.com',
     description='Django simple poll application',
     long_description=long_description,
     long_description_content_type="text/markdown",
